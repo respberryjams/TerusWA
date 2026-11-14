@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "TerusWA — Message Without Saving the Number",
+  "short_name": "TerusWA",
+  "description": "Send a WhatsApp message straight to any phone number without saving it to your contacts.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#f6f3ec",
+  "theme_color": "#184636",
+  "lang": "en",
+  "categories": ["utilities", "social", "productivity"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

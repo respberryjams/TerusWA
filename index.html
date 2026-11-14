@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>TerusWA — Send WhatsApp Without Saving the Number</title>
 
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="TerusWA">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -122,10 +126,16 @@
                     <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Message without saving the number</p>
                 </div>
             </div>
+            <div class="flex items-center gap-2">
+            <button id="installBtn" type="button" class="hidden items-center gap-1.5 pl-3 pr-3.5 py-2 rounded-xl text-xs font-bold text-amber-900 dark:text-amber-100 bg-gradient-to-br from-amber-200 to-amber-400 dark:from-amber-700 dark:to-amber-600 shadow-md shadow-amber-500/20 active:scale-95 transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg>
+                Install
+            </button>
             <button id="themeToggle" type="button" aria-label="Toggle theme" class="p-2.5 rounded-xl bg-white/70 hover:bg-white dark:bg-slate-800/70 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70 transition-all active:scale-90">
                 <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                 <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
             </button>
+            </div>
         </div>
     </header>
 
@@ -904,6 +914,34 @@
         });
 
         phoneInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); openWaBtn.click(); } });
+
+        // --- PWA: install button + service worker ---
+        const installBtn = $('installBtn');
+        let deferredPrompt = null;
+        const isStandalone = () => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        const setInstallVisible = on => { installBtn.classList.toggle('hidden', !on); installBtn.classList.toggle('inline-flex', on); };
+
+        window.addEventListener('beforeinstallprompt', e => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (!isStandalone()) setInstallVisible(true);
+        });
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            haptic(10);
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            setInstallVisible(false);
+            if (outcome === 'accepted') showToast('Installing TerusWA…');
+        });
+        window.addEventListener('appinstalled', () => {
+            deferredPrompt = null; setInstallVisible(false);
+            showToast('TerusWA installed! 🎉');
+        });
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
 
         // Segarkan masa relatif setiap minit
         setInterval(renderHistory, 60000);

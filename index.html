@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ms" class="light">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>TerusWA — Hantar WhatsApp Tanpa Simpan Nombor</title>
+    <title>TerusWA — Send WhatsApp Without Saving the Number</title>
 
     <meta name="application-name" content="TerusWA">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="TerusWA">
     <meta name="theme-color" content="#f6f3ec">
-    <meta name="description" content="Hantar mesej WhatsApp terus ke mana-mana nombor telefon tanpa perlu simpan dalam kenalan.">
+    <meta name="description" content="Send a WhatsApp message straight to any phone number without saving it to your contacts.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,10 +119,10 @@
                 </div>
                 <div>
                     <h1 class="font-extrabold text-lg tracking-tight leading-none">Terus<span class="bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent">WA</span></h1>
-                    <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Mesej tanpa simpan nombor</p>
+                    <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Message without saving the number</p>
                 </div>
             </div>
-            <button id="themeToggle" type="button" aria-label="Tukar Tema" class="p-2.5 rounded-xl bg-white/70 hover:bg-white dark:bg-slate-800/70 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70 transition-all active:scale-90">
+            <button id="themeToggle" type="button" aria-label="Toggle theme" class="p-2.5 rounded-xl bg-white/70 hover:bg-white dark:bg-slate-800/70 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70 transition-all active:scale-90">
                 <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                 <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
             </button>
@@ -133,8 +133,8 @@
 
         <!-- Hero -->
         <div class="rise text-center px-2">
-            <h2 class="text-[26px] leading-tight font-extrabold tracking-tight">Hantar WhatsApp <span class="bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent">terus</span>,<br>tak perlu simpan nombor.</h2>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Tampal nombor, tulis mesej (pilihan), tekan butang. Siap.</p>
+            <h2 class="text-[26px] leading-tight font-extrabold tracking-tight">WhatsApp anyone <span class="bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent">instantly</span>,<br>no need to save their number.</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Paste the number, add a message (optional), tap the button. Done.</p>
         </div>
 
         <!-- Kad Utama -->
@@ -142,23 +142,21 @@
 
             <div>
                 <div class="flex items-center justify-between mb-2.5 min-h-[24px]">
-                    <label for="phoneInput" class="text-sm font-semibold">Nombor Telefon Penerima</label>
+                    <label for="phoneInput" class="text-sm font-semibold">Recipient Phone Number</label>
                     <span id="formattedPreview" class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-900 px-2.5 py-0.5 rounded-full hidden">+60...</span>
                 </div>
 
-                <!-- Pilihan kod negara -->
-                <div id="countryPills" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-3 -mx-1 px-1"></div>
-
                 <div class="flex items-stretch gap-2">
-                    <div class="field relative w-24 shrink-0 rounded-2xl transition-shadow">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-semibold select-none">+</span>
-                        <input type="tel" id="countryCodeInput" value="60" maxlength="4" aria-label="Kod Negara"
-                            class="w-full h-full pl-6 pr-2 py-3.5 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl text-base font-bold text-center focus:outline-none focus:border-emerald-500 transition-all">
-                    </div>
+                    <button type="button" id="countryBtn" aria-label="Select country" class="field shrink-0 flex items-center gap-1.5 pl-3.5 pr-2.5 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-amber-400 active:scale-95 transition-all">
+                        <span id="countryBtnFlag" class="text-xl leading-none">🇲🇾</span>
+                        <span id="countryBtnCode" class="text-sm font-bold font-mono">+60</span>
+                        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <input type="hidden" id="countryCodeInput" value="60">
                     <div id="phoneWrap" class="field relative flex-1 rounded-2xl transition-shadow">
                         <input type="tel" id="phoneInput" placeholder="012-345 6789" autocomplete="tel"
                             class="w-full pl-4 pr-10 py-3.5 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl text-base sm:text-lg font-semibold tracking-wide placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:border-emerald-500 transition-all">
-                        <button type="button" id="clearPhoneBtn" title="Kosongkan nombor" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 text-slate-400 hover:text-rose-500 rounded-lg transition-colors">
+                        <button type="button" id="clearPhoneBtn" title="Clear number" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 text-slate-400 hover:text-rose-500 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                         </button>
                     </div>
@@ -167,36 +165,36 @@
                 <div class="flex items-center justify-between gap-2 mt-3">
                     <button type="button" id="pasteBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white/70 hover:bg-emerald-50 text-slate-700 hover:text-emerald-600 dark:bg-slate-800/70 dark:hover:bg-emerald-950/50 dark:text-slate-300 dark:hover:text-emerald-400 border border-slate-200/70 dark:border-slate-700/70 transition-all active:scale-95">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-                        Tampal
+                        Paste
                     </button>
-                    <input type="text" id="noteInput" placeholder="Nota ringkas (cth: Rider)" maxlength="30"
+                    <input type="text" id="noteInput" placeholder="Short note (e.g. Rider)" maxlength="30"
                         class="flex-1 max-w-[210px] px-3 py-1.5 bg-transparent border-b border-dashed border-slate-300 dark:border-slate-600 text-xs placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 transition-colors text-right">
                 </div>
 
                 <p id="errorMsg" class="hidden mt-2.5 text-xs font-medium text-rose-500 items-center gap-1">
                     <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    <span>Sila masukkan nombor telefon yang sah.</span>
+                    <span>Please enter a valid phone number.</span>
                 </p>
             </div>
 
             <!-- Mesej -->
             <div class="pt-4 border-t border-slate-200/60 dark:border-slate-700/50">
                 <div class="flex items-center justify-between mb-2">
-                    <label for="messageInput" class="text-sm font-semibold">Mesej <span class="text-xs font-normal text-slate-400">(Pilihan)</span></label>
+                    <label for="messageInput" class="text-sm font-semibold">Message <span class="text-xs font-normal text-slate-400">(Optional)</span></label>
                     <div class="flex items-center gap-3">
                         <span id="charCount" class="text-[11px] font-mono text-slate-400">0</span>
-                        <button type="button" id="clearMsgBtn" class="hidden text-xs font-medium text-slate-400 hover:text-rose-500 transition-colors">Padam</button>
+                        <button type="button" id="clearMsgBtn" class="hidden text-xs font-medium text-slate-400 hover:text-rose-500 transition-colors">Clear</button>
                     </div>
                 </div>
                 <div class="field rounded-2xl transition-shadow">
-                    <textarea id="messageInput" rows="3" placeholder="Tulis mesej anda di sini... (akan terus terisi di WhatsApp)"
+                    <textarea id="messageInput" rows="3" placeholder="Type your message here... (it will be pre-filled in WhatsApp)"
                         class="w-full p-3.5 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 transition-all resize-none"></textarea>
                 </div>
 
                 <div class="mt-3">
                     <div class="flex items-center justify-between mb-1.5">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Templat Pantas</span>
-                        <button type="button" id="openAddTemplateModal" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">+ Tambah</button>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Quick Templates</span>
+                        <button type="button" id="openAddTemplateModal" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">+ Add</button>
                     </div>
                     <div id="templateContainer" class="flex flex-wrap gap-1.5"></div>
                 </div>
@@ -206,18 +204,18 @@
             <div class="pt-1 space-y-2.5 sticky bottom-3 z-20">
                 <button type="button" id="openWaBtn" class="btn-main ripple-host w-full py-4 px-5 rounded-2xl text-white font-bold text-base shadow-xl shadow-emerald-500/30 flex items-center justify-center gap-2.5 active:scale-[.98] hover:shadow-emerald-500/50 hover:-translate-y-0.5 transition-all cursor-pointer">
                     <svg class="w-5 h-5 fill-current"><use href="#wa"/></svg>
-                    <span>Buka di WhatsApp</span>
+                    <span>Open in WhatsApp</span>
                     <kbd class="hidden sm:inline text-[10px] opacity-70 bg-white/20 rounded px-1.5 py-0.5">Ctrl ⏎</kbd>
                 </button>
 
                 <div class="grid grid-cols-2 gap-2.5">
                     <button type="button" id="copyLinkBtn" class="py-3 px-4 rounded-2xl bg-white/70 hover:bg-white dark:bg-slate-800/70 dark:hover:bg-slate-700 border border-slate-200/70 dark:border-slate-700/70 font-semibold text-sm flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer">
                         <svg class="w-4 h-4 text-slate-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                        <span>Salin Pautan</span>
+                        <span>Copy Link</span>
                     </button>
                     <button type="button" id="qrCodeBtn" class="py-3 px-4 rounded-2xl bg-white/70 hover:bg-white dark:bg-slate-800/70 dark:hover:bg-slate-700 border border-slate-200/70 dark:border-slate-700/70 font-semibold text-sm flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer">
                         <svg class="w-4 h-4 text-slate-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
-                        <span>Kod QR</span>
+                        <span>QR Code</span>
                     </button>
                 </div>
             </div>
@@ -227,15 +225,15 @@
         <section class="rise d2 glass rounded-[28px] p-5 sm:p-6">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center gap-2">
-                    <h2 class="text-base font-bold">Sejarah Terkini</h2>
+                    <h2 class="text-base font-bold">Recent History</h2>
                     <span id="historyCount" class="px-2 py-0.5 text-xs font-bold rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">0</span>
                 </div>
-                <button type="button" id="clearAllHistoryBtn" class="hidden text-xs font-semibold text-rose-500 hover:text-rose-600 transition-colors">Padam Semua</button>
+                <button type="button" id="clearAllHistoryBtn" class="hidden text-xs font-semibold text-rose-500 hover:text-rose-600 transition-colors">Delete All</button>
             </div>
 
             <div id="searchWrap" class="hidden relative mb-3">
                 <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
-                <input id="historySearch" type="search" placeholder="Cari nombor, nota atau mesej..." class="w-full pl-9 pr-3 py-2.5 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/60">
+                <input id="historySearch" type="search" placeholder="Search number, note or message..." class="w-full pl-9 pr-3 py-2.5 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/60">
             </div>
 
             <div id="historyList" class="space-y-2.5"></div>
@@ -244,35 +242,53 @@
                 <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-950 dark:to-teal-950 text-emerald-500 flex items-center justify-center mx-auto mb-3">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
-                <p id="emptyTitle" class="text-sm font-semibold">Tiada sejarah lagi</p>
-                <p id="emptyDesc" class="text-xs text-slate-400 mt-1">Nombor yang anda hubungi akan disimpan di sini untuk akses pantas.</p>
+                <p id="emptyTitle" class="text-sm font-semibold">No history yet</p>
+                <p id="emptyDesc" class="text-xs text-slate-400 mt-1">Numbers you contact will be saved here for quick access.</p>
             </div>
         </section>
     </main>
 
     <footer class="rise d3 max-w-lg w-full mx-auto px-4 py-6 text-center text-xs text-slate-400 dark:text-slate-500">
-        <p>🔒 TerusWA tidak menyimpan sebarang data peribadi di pelayan.<br>Semua sejarah disimpan secara tempatan di pelayar anda.</p>
+        <p>🔒 TerusWA does not store any personal data on a server.<br>All history is saved locally in your browser.</p>
     </footer>
+
+    <!-- MODAL: Select Country -->
+    <div id="countryModal" class="modal fixed inset-0 z-50 flex items-end sm:items-center justify-center p-3 sm:p-4 bg-slate-950/60 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-sm w-full shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col max-h-[78vh] overflow-hidden">
+            <div class="p-4 pb-3 space-y-3">
+                <div class="mx-auto w-10 h-1 rounded-full bg-slate-300 dark:bg-slate-700 sm:hidden"></div>
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-lg">Select Country</h3>
+                    <button type="button" id="closeCountryModal" class="p-1.5 rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+                </div>
+                <div class="relative">
+                    <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+                    <input id="countrySearch" type="search" placeholder="Search country or code (e.g. 65)" autocomplete="off" class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/60">
+                </div>
+            </div>
+            <div id="countryList" class="overflow-y-auto overscroll-contain px-2 pb-3 flex-1"></div>
+        </div>
+    </div>
 
     <!-- MODAL: QR -->
     <div id="qrModal" class="modal fixed inset-0 z-50 flex items-end sm:items-center justify-center p-3 sm:p-4 bg-slate-950/60 backdrop-blur-sm">
         <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-center space-y-4">
             <div class="flex items-center justify-between">
-                <h3 class="font-bold text-lg">Imbas Kod QR</h3>
+                <h3 class="font-bold text-lg">Scan QR Code</h3>
                 <button type="button" id="closeQrModal" class="p-1.5 rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400">Imbas dengan kamera telefon untuk terus membuka perbualan WhatsApp.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Scan with your phone camera to open the WhatsApp chat directly.</p>
             <div class="p-4 bg-white rounded-2xl border-2 border-emerald-200 inline-block mx-auto shadow-inner"><div id="qrcode"></div></div>
             <div class="bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-xl">
                 <p id="qrNumberDisplay" class="font-mono text-sm font-bold text-emerald-600 dark:text-emerald-400"></p>
                 <p id="qrLinkDisplay" class="text-[11px] text-slate-400 truncate mt-0.5"></p>
             </div>
             <div class="flex gap-2">
-                <button type="button" id="copyQrLinkBtn" class="flex-1 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm transition-colors cursor-pointer">Salin Pautan</button>
-                <button type="button" id="shareQrBtn" class="hidden py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 font-semibold text-sm transition-colors cursor-pointer" title="Kongsi">
+                <button type="button" id="copyQrLinkBtn" class="flex-1 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm transition-colors cursor-pointer">Copy Link</button>
+                <button type="button" id="shareQrBtn" class="hidden py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 font-semibold text-sm transition-colors cursor-pointer" title="Share">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
                 </button>
-                <button type="button" id="downloadQrBtn" class="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 font-semibold text-sm transition-colors cursor-pointer" title="Muat Turun">
+                <button type="button" id="downloadQrBtn" class="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 font-semibold text-sm transition-colors cursor-pointer" title="Download">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                 </button>
             </div>
@@ -283,26 +299,26 @@
     <div id="editHistoryModal" class="modal fixed inset-0 z-50 flex items-end sm:items-center justify-center p-3 sm:p-4 bg-slate-950/60 backdrop-blur-sm">
         <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
             <div class="flex items-center justify-between">
-                <h3 class="font-bold text-lg">Sunting Rekod</h3>
+                <h3 class="font-bold text-lg">Edit Record</h3>
                 <button type="button" id="closeEditHistoryModal" class="p-1.5 rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
             <div class="space-y-3">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Nombor Telefon</label>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Phone Number</label>
                     <p id="editHistoryPhoneDisplay" class="px-3.5 py-2.5 bg-slate-100 dark:bg-slate-800/80 rounded-xl text-sm font-mono font-bold"></p>
                 </div>
                 <div>
-                    <label for="editHistoryNoteInput" class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Label / Nota</label>
-                    <input type="text" id="editHistoryNoteInput" placeholder="Contoh: Rider Grab" maxlength="30" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <label for="editHistoryNoteInput" class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Label / Note</label>
+                    <input type="text" id="editHistoryNoteInput" placeholder="e.g. Grab Rider" maxlength="30" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
                 <div>
-                    <label for="editHistoryMsgInput" class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Mesej Tersimpan</label>
-                    <textarea id="editHistoryMsgInput" rows="2" placeholder="Mesej pilihan..." class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"></textarea>
+                    <label for="editHistoryMsgInput" class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Saved Message</label>
+                    <textarea id="editHistoryMsgInput" rows="2" placeholder="Optional message..." class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"></textarea>
                 </div>
             </div>
             <div class="flex gap-2 pt-2">
-                <button type="button" id="cancelEditHistoryBtn" class="flex-1 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-semibold text-sm cursor-pointer">Batal</button>
-                <button type="button" id="saveEditHistoryBtn" class="flex-1 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm cursor-pointer">Simpan</button>
+                <button type="button" id="cancelEditHistoryBtn" class="flex-1 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-semibold text-sm cursor-pointer">Cancel</button>
+                <button type="button" id="saveEditHistoryBtn" class="flex-1 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm cursor-pointer">Save</button>
             </div>
         </div>
     </div>
@@ -311,22 +327,22 @@
     <div id="templateModal" class="modal fixed inset-0 z-50 flex items-end sm:items-center justify-center p-3 sm:p-4 bg-slate-950/60 backdrop-blur-sm">
         <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
             <div class="flex items-center justify-between">
-                <h3 class="font-bold text-lg">Tambah Templat</h3>
+                <h3 class="font-bold text-lg">Add Template</h3>
                 <button type="button" id="closeTemplateModal" class="p-1.5 rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
             <div class="space-y-3">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Label Butang</label>
-                    <input type="text" id="newTplTitle" placeholder="Contoh: Tanya Stok" maxlength="20" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Button Label</label>
+                    <input type="text" id="newTplTitle" placeholder="e.g. Ask About Stock" maxlength="20" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Teks Mesej Penuh</label>
-                    <textarea id="newTplText" rows="3" placeholder="Contoh: Salam, barang ini masih ada stok lagi ke?" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"></textarea>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Full Message Text</label>
+                    <textarea id="newTplText" rows="3" placeholder="e.g. Hi, is this item still in stock?" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"></textarea>
                 </div>
             </div>
             <div class="flex gap-2 pt-2">
-                <button type="button" id="cancelTemplateBtn" class="flex-1 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-semibold text-sm">Batal</button>
-                <button type="button" id="saveTemplateBtn" class="flex-1 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm">Simpan</button>
+                <button type="button" id="cancelTemplateBtn" class="flex-1 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-semibold text-sm">Cancel</button>
+                <button type="button" id="saveTemplateBtn" class="flex-1 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm">Save</button>
             </div>
         </div>
     </div>
@@ -338,12 +354,12 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
             </div>
             <div>
-                <h3 class="font-bold text-base">Padam Semua Sejarah?</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Rekod yang disematkan ⭐ juga akan dipadam. Tindakan ini tidak boleh dikembalikan.</p>
+                <h3 class="font-bold text-base">Delete All History?</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Pinned ⭐ records will also be deleted. This cannot be undone.</p>
             </div>
             <div class="flex gap-2">
-                <button type="button" id="cancelClearHistoryBtn" class="flex-1 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-semibold text-xs">Batal</button>
-                <button type="button" id="confirmClearHistoryBtn" class="flex-1 py-2.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-semibold text-xs">Ya, Padam</button>
+                <button type="button" id="cancelClearHistoryBtn" class="flex-1 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-semibold text-xs">Cancel</button>
+                <button type="button" id="confirmClearHistoryBtn" class="flex-1 py-2.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-semibold text-xs">Yes, Delete</button>
             </div>
         </div>
     </div>
@@ -359,7 +375,7 @@
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const $ = id => document.getElementById(id);
-        const themeToggle = $('themeToggle'), countryCodeInput = $('countryCodeInput'), countryPillsWrap = $('countryPills');
+        const themeToggle = $('themeToggle'), countryCodeInput = $('countryCodeInput');
         const phoneInput = $('phoneInput'), phoneWrap = $('phoneWrap'), clearPhoneBtn = $('clearPhoneBtn'), pasteBtn = $('pasteBtn');
         const noteInput = $('noteInput'), formattedPreview = $('formattedPreview'), errorMsg = $('errorMsg');
         const messageInput = $('messageInput'), clearMsgBtn = $('clearMsgBtn'), charCount = $('charCount'), templateContainer = $('templateContainer');
@@ -377,19 +393,60 @@
         const STORAGE_KEYS = { THEME: 'teruswa_theme', HISTORY: 'teruswa_history', TEMPLATES: 'teruswa_templates' };
 
         const COUNTRIES = [
-            { code: '60', flag: '🇲🇾' }, { code: '65', flag: '🇸🇬' }, { code: '62', flag: '🇮🇩' },
-            { code: '673', flag: '🇧🇳' }, { code: '66', flag: '🇹🇭' }, { code: '63', flag: '🇵🇭' },
-            { code: '84', flag: '🇻🇳' }, { code: '91', flag: '🇮🇳' }, { code: '86', flag: '🇨🇳' },
-            { code: '61', flag: '🇦🇺' }, { code: '44', flag: '🇬🇧' }, { code: '966', flag: '🇸🇦' }
+            { code: '60',  flag: '🇲🇾', name: 'Malaysia' },
+            { code: '65',  flag: '🇸🇬', name: 'Singapore' },
+            { code: '62',  flag: '🇮🇩', name: 'Indonesia' },
+            { code: '673', flag: '🇧🇳', name: 'Brunei' },
+            { code: '66',  flag: '🇹🇭', name: 'Thailand' },
+            { code: '1',   flag: '🇺🇸', name: 'United States / Canada' },
+            { code: '966', flag: '🇸🇦', name: 'Saudi Arabia' },
+            { code: '61',  flag: '🇦🇺', name: 'Australia' },
+            { code: '880', flag: '🇧🇩', name: 'Bangladesh' },
+            { code: '973', flag: '🇧🇭', name: 'Bahrain' },
+            { code: '44',  flag: '🇬🇧', name: 'United Kingdom' },
+            { code: '55',  flag: '🇧🇷', name: 'Brazil' },
+            { code: '86',  flag: '🇨🇳', name: 'China' },
+            { code: '971', flag: '🇦🇪', name: 'United Arab Emirates' },
+            { code: '63',  flag: '🇵🇭', name: 'Philippines' },
+            { code: '852', flag: '🇭🇰', name: 'Hong Kong' },
+            { code: '91',  flag: '🇮🇳', name: 'India' },
+            { code: '39',  flag: '🇮🇹', name: 'Italy' },
+            { code: '81',  flag: '🇯🇵', name: 'Japan' },
+            { code: '49',  flag: '🇩🇪', name: 'Germany' },
+            { code: '855', flag: '🇰🇭', name: 'Cambodia' },
+            { code: '82',  flag: '🇰🇷', name: 'South Korea' },
+            { code: '965', flag: '🇰🇼', name: 'Kuwait' },
+            { code: '856', flag: '🇱🇦', name: 'Laos' },
+            { code: '853', flag: '🇲🇴', name: 'Macau' },
+            { code: '960', flag: '🇲🇻', name: 'Maldives' },
+            { code: '20',  flag: '🇪🇬', name: 'Egypt' },
+            { code: '95',  flag: '🇲🇲', name: 'Myanmar' },
+            { code: '977', flag: '🇳🇵', name: 'Nepal' },
+            { code: '31',  flag: '🇳🇱', name: 'Netherlands' },
+            { code: '64',  flag: '🇳🇿', name: 'New Zealand' },
+            { code: '968', flag: '🇴🇲', name: 'Oman' },
+            { code: '92',  flag: '🇵🇰', name: 'Pakistan' },
+            { code: '33',  flag: '🇫🇷', name: 'France' },
+            { code: '974', flag: '🇶🇦', name: 'Qatar' },
+            { code: '7',   flag: '🇷🇺', name: 'Russia' },
+            { code: '34',  flag: '🇪🇸', name: 'Spain' },
+            { code: '94',  flag: '🇱🇰', name: 'Sri Lanka' },
+            { code: '886', flag: '🇹🇼', name: 'Taiwan' },
+            { code: '670', flag: '🇹🇱', name: 'Timor-Leste' },
+            { code: '90',  flag: '🇹🇷', name: 'Turkey' },
+            { code: '27',  flag: '🇿🇦', name: 'South Africa' },
+            { code: '84',  flag: '🇻🇳', name: 'Vietnam' }
         ];
+        const POPULAR = 5;
+        COUNTRIES.splice(POPULAR, COUNTRIES.length, ...COUNTRIES.slice(POPULAR).sort((a, b) => a.name.localeCompare(b.name, 'en')));
         // Kod yang dikesan automatik bila nombor bermula dengan "+" (paling panjang dahulu)
-        const KNOWN_CODES = COUNTRIES.map(c => c.code).sort((a, b) => b.length - a.length);
+        const KNOWN_CODES = [...new Set(COUNTRIES.map(c => c.code))].sort((a, b) => b.length - a.length);
 
         const DEFAULT_TEMPLATES = [
-            { id: 'tpl_1', title: '👋 Assalamualaikum', text: 'Assalamualaikum, ', isDefault: true },
-            { id: 'tpl_2', title: '🙋 Hai / Salam', text: 'Hai, boleh saya bertanya?', isDefault: true },
-            { id: 'tpl_3', title: '📍 Lokasi', text: 'Salam, boleh kongsikan lokasi (share location)?', isDefault: true },
-            { id: 'tpl_4', title: '🙏 Terima kasih', text: 'Terima kasih banyak!', isDefault: true }
+            { id: 'tpl_1', title: '👋 Greeting', text: 'Hello, ', isDefault: true },
+            { id: 'tpl_2', title: '🙋 Quick question', text: 'Hi, may I ask a question?', isDefault: true },
+            { id: 'tpl_3', title: '📍 Location', text: 'Hi, could you share your location?', isDefault: true },
+            { id: 'tpl_4', title: '🙏 Thank you', text: 'Thank you very much!', isDefault: true }
         ];
 
         // --- Penolong: haptik, ripple, modal, escape ---
@@ -397,7 +454,7 @@
         const escapeHTML = str => String(str).replace(/[&<>'"]/g, t => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[t]));
         const openModal = m => { m.classList.add('open'); };
         const closeModal = m => { m.classList.remove('open'); };
-        const modals = [qrModal, editHistoryModal, templateModal, confirmClearModal];
+        const modals = [qrModal, editHistoryModal, templateModal, confirmClearModal, $('countryModal')];
 
         document.addEventListener('click', e => {
             const host = e.target.closest('.ripple-host');
@@ -487,36 +544,69 @@
             else formattedPreview.classList.add('hidden');
         }
 
-        // --- Pill kod negara ---
-        function renderCountryPills() {
-            countryPillsWrap.innerHTML = '';
-            COUNTRIES.forEach(c => {
-                const b = document.createElement('button');
-                b.type = 'button'; b.dataset.code = c.code;
-                b.textContent = `${c.flag} +${c.code}`;
-                b.addEventListener('click', () => {
-                    countryCodeInput.value = c.code; syncCountryPills(c.code);
-                    updateLivePreview(); phoneInput.focus(); haptic(8);
-                });
-                countryPillsWrap.appendChild(b);
-            });
-            syncCountryPills(countryCodeInput.value);
-        }
-        function syncCountryPills(active) {
-            countryPillsWrap.querySelectorAll('button').forEach(p => {
-                const on = p.dataset.code === active;
-                p.className = 'shrink-0 px-3 py-1.5 rounded-xl text-xs transition-all active:scale-95 ' + (on
-                    ? 'font-bold bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-md shadow-emerald-500/30'
-                    : 'font-medium bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70 hover:bg-white dark:hover:bg-slate-700');
-            });
-            const act = countryPillsWrap.querySelector(`[data-code="${active}"]`);
-            if (act) act.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-        }
+        // --- Pemilih negara (senarai scroll dalam bottom sheet) ---
+        const countryModal = $('countryModal'), countryList = $('countryList'), countrySearch = $('countrySearch'), countryBtn = $('countryBtn');
+        const findCountry = code => COUNTRIES.find(c => c.code === code);
+        const CHECK = '<svg class="w-5 h-5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" d="M5 13l4 4L19 7"/></svg>';
 
-        countryCodeInput.addEventListener('input', () => {
-            countryCodeInput.value = countryCodeInput.value.replace(/\D/g, '');
-            syncCountryPills(countryCodeInput.value); updateLivePreview();
+        function syncCountryPills(code) {
+            const c = findCountry(code);
+            $('countryBtnFlag').textContent = c ? c.flag : '🌐';
+            $('countryBtnCode').textContent = '+' + (code || '');
+        }
+        function pickCountry(code) {
+            countryCodeInput.value = code;
+            syncCountryPills(code); updateLivePreview();
+            closeModal(countryModal); haptic(8);
+            setTimeout(() => phoneInput.focus(), 150);
+        }
+        function renderCountryList() {
+            const q = countrySearch.value.trim().toLowerCase().replace(/^\+/, '');
+            const cur = countryCodeInput.value;
+            countryList.innerHTML = '';
+            const label = t => {
+                const d = document.createElement('div');
+                d.className = 'px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400';
+                d.textContent = t; countryList.appendChild(d);
+            };
+            const row = (flag, name, code, on, onClick) => {
+                const b = document.createElement('button');
+                b.type = 'button'; if (on) b.dataset.on = '1';
+                b.className = 'w-full flex items-center gap-3 px-3 py-3 rounded-2xl transition-colors text-left ' +
+                    (on ? 'bg-emerald-50 dark:bg-emerald-950/50' : 'hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-100 dark:active:bg-slate-800');
+                b.innerHTML = `<span class="text-2xl leading-none">${flag}</span>
+                    <span class="flex-1 text-sm font-semibold truncate">${escapeHTML(name)}</span>
+                    <span class="font-mono text-sm text-slate-500 dark:text-slate-400">+${escapeHTML(code)}</span>${on ? CHECK : ''}`;
+                b.addEventListener('click', onClick);
+                countryList.appendChild(b);
+            };
+            const items = COUNTRIES.filter(c => !q || c.name.toLowerCase().includes(q) || c.code.startsWith(q));
+            items.forEach((c, i) => {
+                if (!q) {
+                    if (i === 0) label('Popular');
+                    if (i === POPULAR) label('All countries');
+                }
+                row(c.flag, c.name, c.code, c.code === cur, () => pickCountry(c.code));
+            });
+            if (/^\d{1,4}$/.test(q) && !COUNTRIES.some(c => c.code === q)) {
+                row('🌐', 'Use this code', q, q === cur, () => pickCountry(q));
+            }
+            if (!countryList.children.length) {
+                const d = document.createElement('p');
+                d.className = 'text-center text-sm text-slate-400 py-8';
+                d.textContent = 'Country not found';
+                countryList.appendChild(d);
+            }
+        }
+        countryBtn.addEventListener('click', () => {
+            countrySearch.value = '';
+            renderCountryList();
+            openModal(countryModal);
+            setTimeout(() => { const sel = countryList.querySelector('[data-on="1"]'); if (sel) sel.scrollIntoView({ block: 'center' }); }, 60);
+            haptic(8);
         });
+        countrySearch.addEventListener('input', renderCountryList);
+        $('closeCountryModal').addEventListener('click', () => closeModal(countryModal));
         phoneInput.addEventListener('input', updateLivePreview);
         phoneInput.addEventListener('paste', () => setTimeout(updateLivePreview, 0));
         clearPhoneBtn.addEventListener('click', () => { phoneInput.value = ''; noteInput.value = ''; updateLivePreview(); phoneInput.focus(); });
@@ -525,9 +615,9 @@
             try {
                 if (!navigator.clipboard || !navigator.clipboard.readText) throw new Error();
                 const text = await navigator.clipboard.readText();
-                if (text && text.trim()) { phoneInput.value = text.trim(); updateLivePreview(); showToast('Nombor ditampal'); haptic(); }
-                else showToast('Papan keratan kosong', true);
-            } catch { phoneInput.focus(); showToast('Sila tampal manual (Ctrl+V / tekan lama)', true); }
+                if (text && text.trim()) { phoneInput.value = text.trim(); updateLivePreview(); showToast('Number pasted'); haptic(); }
+                else showToast('Clipboard is empty', true);
+            } catch { phoneInput.focus(); showToast('Please paste manually (Ctrl+V / long-press)', true); }
         });
 
         // --- Mesej & templat ---
@@ -562,13 +652,13 @@
                 wrap.appendChild(btn);
                 if (!tpl.isDefault) {
                     const del = document.createElement('button');
-                    del.type = 'button'; del.title = 'Padam templat';
+                    del.type = 'button'; del.title = 'Delete template';
                     del.className = 'pr-2.5 pl-1 py-1.5 text-slate-400 hover:text-rose-500 text-sm leading-none';
                     del.innerHTML = '&times;';
                     del.addEventListener('click', e => {
                         e.stopPropagation();
                         saveTemplates(getTemplates().filter(i => i.id !== tpl.id));
-                        renderTemplates(); showToast('Templat dipadam');
+                        renderTemplates(); showToast('Template deleted');
                     });
                     wrap.appendChild(del);
                 }
@@ -581,9 +671,9 @@
         $('cancelTemplateBtn').addEventListener('click', () => closeModal(templateModal));
         $('saveTemplateBtn').addEventListener('click', () => {
             const title = newTplTitle.value.trim(), text = newTplText.value.trim();
-            if (!title || !text) return showToast('Sila isi label dan teks mesej', true);
+            if (!title || !text) return showToast('Please fill in the label and message', true);
             const t = getTemplates().slice(); t.push({ id: 'tpl_' + Date.now(), title, text, isDefault: false });
-            saveTemplates(t); renderTemplates(); closeModal(templateModal); showToast('Templat baharu disimpan!');
+            saveTemplates(t); renderTemplates(); closeModal(templateModal); showToast('New template saved!');
         });
 
         // --- Jana pautan ---
@@ -601,7 +691,7 @@
             return { ...f, url, message, note: noteInput.value.trim() };
         }
 
-        async function copyToClipboard(text, okMsg = 'Pautan disalin!') {
+        async function copyToClipboard(text, okMsg = 'Link copied!') {
             try {
                 if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); }
                 else {
@@ -610,7 +700,7 @@
                     document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
                 }
                 showToast(okMsg); haptic();
-            } catch { showToast('Gagal menyalin pautan', true); }
+            } catch { showToast('Failed to copy link', true); }
         }
 
         openWaBtn.addEventListener('click', () => {
@@ -620,7 +710,7 @@
         });
         copyLinkBtn.addEventListener('click', () => {
             const d = generateWhatsAppLink(); if (!d) return;
-            saveToHistory(d); copyToClipboard(d.url, 'Pautan WhatsApp disalin!');
+            saveToHistory(d); copyToClipboard(d.url, 'WhatsApp link copied!');
         });
 
         // --- QR ---
@@ -636,9 +726,9 @@
             openModal(qrModal);
         });
         $('closeQrModal').addEventListener('click', () => closeModal(qrModal));
-        $('copyQrLinkBtn').addEventListener('click', () => currentQrUrl && copyToClipboard(currentQrUrl, 'Pautan QR disalin!'));
+        $('copyQrLinkBtn').addEventListener('click', () => currentQrUrl && copyToClipboard(currentQrUrl, 'QR link copied!'));
         $('shareQrBtn').addEventListener('click', async () => {
-            try { await navigator.share({ title: 'TerusWA', text: 'Hubungi saya di WhatsApp', url: currentQrUrl }); } catch {}
+            try { await navigator.share({ title: 'TerusWA', text: 'Contact me on WhatsApp', url: currentQrUrl }); } catch {}
         });
         $('downloadQrBtn').addEventListener('click', () => {
             const canvas = qrcodeDiv.querySelector('canvas'), img = qrcodeDiv.querySelector('img');
@@ -647,7 +737,7 @@
             const a = document.createElement('a');
             a.href = dataUrl; a.download = `TerusWA-QR-${qrNumberDisplay.textContent.replace(/\s+/g, '')}.png`;
             document.body.appendChild(a); a.click(); document.body.removeChild(a);
-            showToast('Gambar Kod QR dimuat turun!');
+            showToast('QR code image downloaded!');
         });
 
         // --- Sunting sejarah ---
@@ -669,7 +759,7 @@
             if (i !== -1) {
                 h[i].note = editHistoryNoteInput.value.trim();
                 h[i].lastMessage = editHistoryMsgInput.value.trim();
-                setHistory(h); renderHistory(); showToast('Rekod dikemas kini!');
+                setHistory(h); renderHistory(); showToast('Record updated!');
             }
             closeEdit();
         });
@@ -701,10 +791,10 @@
 
         function formatRelativeTime(ts) {
             const s = Math.floor((Date.now() - ts) / 1000);
-            if (s < 60) return 'Baru sebentar tadi';
-            const m = Math.floor(s / 60); if (m < 60) return `${m} minit lalu`;
-            const hr = Math.floor(m / 60); if (hr < 24) return `${hr} jam lalu`;
-            return new Date(ts).toLocaleDateString('ms-MY', { day: 'numeric', month: 'short', year: 'numeric' });
+            if (s < 60) return 'Just now';
+            const m = Math.floor(s / 60); if (m < 60) return `${m} min ago`;
+            const hr = Math.floor(m / 60); if (hr < 24) return `${hr} h ago`;
+            return new Date(ts).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
         }
 
         const ICON_WA = '<svg class="w-4 h-4 fill-current"><use href="#wa"/></svg>';
@@ -729,8 +819,8 @@
             historyList.innerHTML = '';
             if (list.length === 0) {
                 emptyHistoryState.classList.remove('hidden');
-                emptyTitle.textContent = all.length ? 'Tiada padanan' : 'Tiada sejarah lagi';
-                emptyDesc.textContent = all.length ? 'Cuba kata kunci lain.' : 'Nombor yang anda hubungi akan disimpan di sini untuk akses pantas.';
+                emptyTitle.textContent = all.length ? 'No matches' : 'No history yet';
+                emptyDesc.textContent = all.length ? 'Try a different keyword.' : 'Numbers you contact will be saved here for quick access.';
                 return;
             }
             emptyHistoryState.classList.add('hidden');
@@ -745,7 +835,7 @@
 
                 const info = document.createElement('div');
                 info.className = 'flex-1 min-w-0 cursor-pointer';
-                info.title = 'Klik untuk masukkan semula nombor ini';
+                info.title = 'Click to reload this number';
                 info.innerHTML = `
                     <div class="flex items-center gap-2">
                         <span class="font-bold text-sm font-mono truncate">${escapeHTML(item.displayFormatted)}</span>
@@ -761,42 +851,42 @@
                     if (item.lastMessage) messageInput.value = item.lastMessage;
                     updateMsgMeta(); updateLivePreview();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    showToast('Nombor dimuatkan ke borang'); haptic(8);
+                    showToast('Number loaded into the form'); haptic(8);
                 });
 
                 const actions = document.createElement('div');
                 actions.className = 'flex items-center gap-0.5 shrink-0';
 
                 const pin = document.createElement('button');
-                pin.type = 'button'; pin.title = item.pinned ? 'Nyahsemat' : 'Sematkan';
+                pin.type = 'button'; pin.title = item.pinned ? 'Unpin' : 'Pin';
                 pin.className = 'p-2 rounded-xl transition-colors ' + (item.pinned ? 'text-amber-500' : 'text-slate-400 hover:text-amber-500');
                 pin.innerHTML = star(item.pinned);
                 pin.addEventListener('click', () => {
                     const h = getHistory(), i = h.findIndex(x => x.fullNumber === item.fullNumber);
-                    if (i !== -1) { h[i].pinned = !h[i].pinned; setHistory(h); renderHistory(); showToast(h[i].pinned ? 'Disematkan ⭐' : 'Semat dibuang'); haptic(8); }
+                    if (i !== -1) { h[i].pinned = !h[i].pinned; setHistory(h); renderHistory(); showToast(h[i].pinned ? 'Pinned ⭐' : 'Unpinned'); haptic(8); }
                 });
 
                 const wa = document.createElement('a');
                 wa.href = item.lastMessage ? `https://wa.me/${item.fullNumber}?text=${encodeURIComponent(item.lastMessage)}` : `https://wa.me/${item.fullNumber}`;
-                wa.target = '_blank'; wa.rel = 'noopener noreferrer'; wa.title = 'Buka WhatsApp';
+                wa.target = '_blank'; wa.rel = 'noopener noreferrer'; wa.title = 'Open WhatsApp';
                 wa.className = 'p-2 mx-0.5 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/25 hover:scale-105 active:scale-95 transition-transform';
                 wa.innerHTML = ICON_WA;
 
                 const edit = document.createElement('button');
-                edit.type = 'button'; edit.title = 'Sunting';
+                edit.type = 'button'; edit.title = 'Edit';
                 edit.className = 'p-2 rounded-xl text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 transition-colors';
                 edit.innerHTML = ICON_EDIT;
                 edit.addEventListener('click', () => openEditHistory(item));
 
                 const del = document.createElement('button');
-                del.type = 'button'; del.title = 'Padam';
+                del.type = 'button'; del.title = 'Delete';
                 del.className = 'p-2 rounded-xl text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/50 transition-colors';
                 del.innerHTML = ICON_DEL;
                 del.addEventListener('click', () => {
                     card.style.transition = 'all .25s'; card.style.opacity = '0'; card.style.transform = 'translateX(30px)';
                     setTimeout(() => {
                         setHistory(getHistory().filter(h => h.fullNumber !== item.fullNumber));
-                        renderHistory(); showToast('Rekod dipadam');
+                        renderHistory(); showToast('Record deleted');
                     }, 220);
                 });
 
@@ -812,7 +902,7 @@
         $('confirmClearHistoryBtn').addEventListener('click', () => {
             localStorage.removeItem(STORAGE_KEYS.HISTORY);
             historySearch.value = '';
-            renderHistory(); closeModal(confirmClearModal); showToast('Semua sejarah telah dipadam');
+            renderHistory(); closeModal(confirmClearModal); showToast('All history deleted');
         });
 
         phoneInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); openWaBtn.click(); } });
@@ -822,7 +912,7 @@
 
         // --- Mula ---
         initTheme();
-        renderCountryPills();
+        syncCountryPills(countryCodeInput.value);
         renderTemplates();
         renderHistory();
         updateMsgMeta();
